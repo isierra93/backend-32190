@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Pantalones",
+    "price": 100,
+    "thumbnail": "https://yagmour.vtexassets.com/arquivos/ids/266058/Pantalon-Maite-Marron-Claro-0300193160-01.jpg?v=637955750777870000",
+    "id": 1
+  },
+  {
+    "title": "Camperas",
+    "price": 100,
+    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9wrA2YP3feetOpWwWwQCVbYKJ_HIACEGV_LO4Rp5nc10XW0nuaUYjXBaGwSRi43sEe0M&usqp=CAU",
+    "id": 2
+  },
+  {
+    "title": "Mochila",
+    "price": 100,
+    "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_676530-MLA48895168787_012022-O.webp",
+    "id": 3
+  }
+]

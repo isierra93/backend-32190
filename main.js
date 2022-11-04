@@ -22,24 +22,30 @@ class Contenedor {
     constructor(nombre) {
         this.nombre = nombre
     }
-    async save(obj) {
+
+    async getAll () {
         let listProducts = []
-
-        try {
-            const productos = await fs.promises.readFile(`./productos.txt`, `utf-8`);
+        try{
+            const productos = await fs.promises.readFile(`./${this.nombre}.txt`, `utf-8`);
             listProducts = JSON.parse(productos);
-        } catch (err) {
-            throw new Error (`Error en la lectura: ${err}.
-            Se creara archivo TXT nuevo.`);
+            return listProducts;
+        }catch(err){
+            console.log(`No se encontro el archivo, se creara uno nuevo.
+            Error: ${err}.`)
+            return []
         }
+    }
 
+    async save(obj) {
+
+        let listProducts = await this.getAll()
         listProducts.push(obj)
         listProducts.forEach(element => {
             element.id = listProducts.indexOf(element) + 1;
         });
 
         try {
-            await fs.promises.writeFile(`./productos.txt`, JSON.stringify(listProducts, null, 2))
+            await fs.promises.writeFile(`./${this.nombre}.txt`, JSON.stringify(listProducts, null, 2))
         } catch (err) {
             throw new Error (`Error en la escritura ${err}`);
         }
@@ -50,7 +56,7 @@ class Contenedor {
 
     async getById(index) {
         try {
-            const productos = await fs.promises.readFile(`./productos.txt`, `utf-8`);
+            const productos = await fs.promises.readFile(`./${this.nombre}.txt`, `utf-8`);
             let listProducts = JSON.parse(productos);
             const resultado = listProducts.filter(producto => producto.id == index)
 
@@ -64,21 +70,12 @@ class Contenedor {
         }
     }
 
-    async getAll () {
-        try{
-            const productos = await fs.promises.readFile(`./productos.txt`, `utf-8`);
-            let listProducts = JSON.parse(productos);
-            return listProducts;
-        }catch(err){
-            throw new Error (`Error de lectura ${err}`);
-        }
-    }
 
     async deleteById(index){
         let listProducts = []
 
         try{
-            const productos = await fs.promises.readFile(`./productos.txt`, `utf-8`)
+            const productos = await fs.promises.readFile(`./${this.nombre}.txt`, `utf-8`)
             listProducts = JSON.parse(productos);
             listProducts.splice((index-1), 1);
             listProducts.forEach(element => {
@@ -90,7 +87,7 @@ class Contenedor {
         }
 
         try{
-            await fs.promises.writeFile(`./productos.txt`, JSON.stringify(listProducts, null, 2))
+            await fs.promises.writeFile(`./${this.nombre}.txt`, JSON.stringify(listProducts, null, 2))
         }catch(err){
             throw new Error (`Error de escritura: ${err}`)
         }
@@ -98,7 +95,7 @@ class Contenedor {
 
     async deleteAll(){
         try{
-            await fs.promises.unlink(`./productos.txt`);
+            await fs.promises.unlink(`./${this.nombre}.txt`);
         }catch(err){
             throw new Error (`Error al borrar archivo: ${err}`);
         }
@@ -107,11 +104,37 @@ class Contenedor {
 
 const productos = new Contenedor(`Productos`);
 
+setTimeout( ()=>{
+    console.log(`Se guarda el producto base 0`)
+    productos.save(productosBase[0]).then( res => console.log(res))
+},1000)
 
-productos.save(productosBase[0]);
-productos.save(productosBase[1]);
-productos.save(productosBase[2]);
-console.log(productos.getById(2));
-console.log(productos.getAll());
-productos.deleteById(1)
-productos.deleteAll()
+setTimeout( ()=>{
+    console.log(`Se guarda el producto base 1`)
+    productos.save(productosBase[1]).then( res => console.log(res));
+},2000)
+
+setTimeout( ()=>{
+    console.log(`TODOS LOS PRODUCTOS:`)
+    productos.getAll().then(res => console.log(res))
+},3000)
+
+setTimeout( ()=>{
+    console.log(`Se guarda el producto base 2`)
+    productos.save(productosBase[2]).then( res => console.log(res));
+},4000)
+
+setTimeout( ()=>{
+    console.log(`Se muestra el producto ID 2`)
+    console.log((productos.getById(2).then(res => console.log(res))))
+},5000)
+
+setTimeout( ()=>{
+    console.log(`Se borra el producto ID 2`)
+    productos.deleteById(2)
+},6000)
+
+setTimeout( () =>{
+    console.log(`TODOS LOS PRODUCTOS:`)
+    productos.getAll().then(res => console.log(res))
+},7000)

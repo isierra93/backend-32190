@@ -1,0 +1,20 @@
+[
+    {
+        "title": "Notebook Gamer",
+        "price": "500",
+        "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_806340-MLA51423594714_092022-O.webp",
+        "id":"1"
+    },
+    {
+        "title": "Colchon Sommier",
+        "price": "250",
+        "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_898982-MLA49837454026_052022-O.webp",
+        "id":"2"
+    },
+    {
+        "title": "Camiseta River Plate",
+        "price": "30",
+        "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_614707-MLA52163002775_102022-O.webp",
+        "id":"3"
+    }
+]

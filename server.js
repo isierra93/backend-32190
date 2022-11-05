@@ -1,4 +1,3 @@
-const { Console } = require('console');
 const express = require('express');
 const app = express();
 const PORT = 8080;
@@ -11,12 +10,6 @@ const server = app.listen(PORT, () => {
 server.on(`error`, (error)=>{
     console.log(`Hubo un error: ${error}.`)
 })
-    
-/* async function test(){
-    let numero = Math.ceil(Math.random() * 3) 
-} */
-
-
 
 async function getById(index) {
     try {
@@ -66,4 +59,3 @@ app.get("/productos", async (req, res) => {
 
      res.send("Listado de productos:" + await readFile())
 });
-

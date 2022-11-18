@@ -1,0 +1,30 @@
+html
+    head
+        meta(charset='UTF-8')
+        title=`Pug Server`
+        style
+             include ./bootstrap.min.css
+        link(rel='shortcut icon' href='https://cdn0.iconfinder.com/data/icons/animal-geometric-faces/128/AnimalHeadIcons_14-64.png' type='image/x-icon')
+    body.container.mt-5
+        .container.mt-5.d-flex.justify-content-center
+            h1 Productos
+        if productos.length>0
+                table.table.table-hover
+                    thead
+                        tr
+                            th(scope='col') Nombre
+                            th(scope='col') Precio
+                            th(scope='col') Foto
+                    tbody
+                    each prod in productos
+                        tr.table-info
+                            td #{prod.inputNombre}
+                            td #{prod.inputPrecio}
+                            td
+                                img(src=prod.inputUrl)
+        else 
+            h1 No hay productos
+        form(action='/' method='get')
+            button.btn.btn-outline-success Cargar productos
+
+    script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js' integrity='sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p' crossorigin='anonymous')

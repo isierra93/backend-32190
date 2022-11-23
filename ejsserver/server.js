@@ -1,19 +1,17 @@
 const express = require(`express`);
 const app = express();
-app.set(`views`,`./views`);
-app.set(`view engine`, `pug`);
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.set(`view engine`,`ejs`);
+app.use(express.static(__dirname));
 
 const PORT = 8080;
-const server = app.listen(PORT, (err) => {
-    if (err) throw new Error(`Error en el servidor ${err}`);
-    console.log(`Escuchando en el 8080.`);
+const server = app.listen(PORT, (err) =>{
+    if (err) throw new Error (`Error ene l servidor ${err}`);
+    console.log(`Escuchando en el ${PORT}`);
 });
 
-
-const productos = []
+const productos = [];
 
 app.get(`/`, (req, res) => {
     res.render(`datos`);

@@ -7,7 +7,7 @@ app.use(express.static(__dirname));
 
 const PORT = 8080;
 const server = app.listen(PORT, (err) =>{
-    if (err) throw new Error (`Error ene l servidor ${err}`);
+    if (err) throw new Error (`Error en el servidor ${err}`);
     console.log(`Escuchando en el ${PORT}`);
 });
 

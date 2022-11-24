@@ -1,0 +1,21 @@
+<form action="/productos" method="post" class="d-flex flex-column justify-content-center ">
+  <h1 class="text-center">Ingrese producto</h1>
+  <div class="form-group">
+    <label for="inputNombre" class="form-label mt-4">Nombre:</label>
+    <input type="text" class="form-control" id="inputNombre" placeholder="Producto..." name="inputNombre">
+
+    <label for="inputPrecio" class="form-label mt-4">Precio:</label>
+    <input type="number" class="form-control" id="inputPrecio" placeholder="Precio..." name="inputPrecio">
+
+    <label for="inputUrl" class="form-label mt-4">Foto URL:</label>
+    <input type="text" class="form-control" id="inputUrl" placeholder="URL..." name="inputUrl">
+  </div>
+  <div class="mt-4 d-flex justify-content-evenly">
+    <button class="btn btn-outline-success">Enviar</button>
+  </div>
+</form>
+<form action="/productos" method="get" class="mt-1">
+  <button class="btn btn-outline-success">
+    Ver tabla
+  </button>
+</form>

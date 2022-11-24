@@ -1,0 +1,2 @@
+Una vez utilizados los 3 motores de plantillas creo que prefiero utilizar Handlebars para mi proyecto,
+ya que no es tan limitado como Pug y su sintaxis no requiere extensiones como Ejs,ademas es mas facil de escribir "{{ }}".
